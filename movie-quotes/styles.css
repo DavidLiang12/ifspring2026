@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  background: #ffffff;
+  color: #111;
+}
+
+.site-header,
+main {
+  width: min(900px, 92vw);
+  margin: 0 auto;
+}
+
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+blockquote {
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 3px solid #000;
+}
+
+
+/* Names */
+.venkman {
+  color: #ff00ff;
+}
+
+.dana {
+  color: #ff0000;
+}
+
+.stantz {
+  color: #006226;
+}
+
+.egon {
+  color: #006aff;
+}
+
+.winston {
+  color: #00f2ff;
+}
+
+.mayor {
+  color: #ffee00;
+}
