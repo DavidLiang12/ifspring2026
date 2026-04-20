@@ -1,0 +1,537 @@
+:root {
+    --bg: #ede6d6;
+    --accent-dark: #4a5a24;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IM Fell DW Pica', serif;
+    background-color: var(--bg);
+    color: var(--accent-dark);
+    min-height: 100vh;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 1.8rem 3.5rem 0.5rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.headerline {
+    flex: 1;
+    height: 2px;
+    background: var(--accent-dark);
+}
+
+.sitetitle {
+    font-family: 'Imbue', serif;
+    font-optical-sizing: auto;
+    font-size: 3.8rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.navgrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 1.8rem;
+    margin: 2.5rem 0 2rem;
+    align-items: start;
+}
+
+.navcard {
+    position: relative;
+    overflow: visible;
+    cursor: pointer;
+    display: block;
+}
+
+.navcardimage {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+}
+
+.navcardimagepadded {
+    object-fit: contain;
+    padding: 2rem;
+}
+
+.navcardimagelower {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+
+.navcardheader {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    position: absolute;
+    top: 6px;
+    left: 32px;
+    right: 32px;
+    z-index: 4;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.navcardline {
+    flex: 1;
+    height: 2px;
+    background: var(--accent-dark);
+}
+
+.navcardlabel {
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.navcard:hover .navcardheader,
+.navcard:focus-visible .navcardheader {
+    opacity: 1;
+}
+
+.navcard::before {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 32px;
+    right: 32px;
+    height: 2px;
+    background: var(--accent-dark);
+    opacity: 0;
+    transition: opacity 0.4s ease 0.1s;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.navcard:hover::before {
+    opacity: 1;
+}
+
+.navcardoverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    aspect-ratio: 3 / 4;
+    pointer-events: none;
+}
+
+.navcardoverlay::before,
+.navcardoverlay::after {
+    content: '';
+    position: absolute;
+    background: var(--accent-dark);
+    width: 2px;
+    top: 32px;
+    bottom: 32px;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.1s;
+}
+
+.navcardoverlay::before {
+    left: 12px;
+}
+
+.navcardoverlay::after {
+    right: 12px;
+}
+
+.navcard:hover .navcardoverlay::before,
+.navcard:hover .navcardoverlay::after,
+.navcard:focus-visible .navcardoverlay::before,
+.navcard:focus-visible .navcardoverlay::after {
+    opacity: 1;
+}
+
+.navcard:focus-visible {
+    outline: 2px solid var(--accent-dark);
+    outline-offset: 3px;
+}
+
+@media (hover: none) {
+    .navcardheader {
+        opacity: 1;
+    }
+
+    .navcard::before,
+    .navcardoverlay::before,
+    .navcardoverlay::after {
+        opacity: 1;
+    }
+}
+
+.description {
+    text-align: center;
+    max-width: 680px;
+    margin: 1.5rem auto 2rem;
+    margin-top: auto;
+    font-size: 1.15rem;
+    line-height: 1.75;
+}
+
+.footerline {
+    height: 2px;
+    background: var(--accent-dark);
+}
+
+.source {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.sectionpage {
+    min-height: 100vh;
+}
+
+.sectionnav {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 3.5rem;
+    gap: 1.2rem;
+    border-bottom: 2px solid var(--accent-dark);
+}
+
+.homelink {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    transition: opacity 0.3s;
+}
+
+.homelink:hover {
+    opacity: 0.7;
+}
+
+.navlinks {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    margin-left: auto;
+}
+
+.navlinks a {
+    font-size: 1rem;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.navlinks a:hover {
+    opacity: 0.7;
+}
+
+.navlinks a.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+@keyframes slideup {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sectioncontent {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3.5rem 3rem 4rem;
+    animation: slideup 0.6s ease both;
+}
+
+.sectioncontent h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    clear: both;
+    border-bottom: 1.7px solid var(--accent-dark);
+    padding-bottom: 0.7rem;
+}
+
+.sectioncontent h3 + * {
+    margin-top: 0.9rem;
+}
+
+.sectioncontent h3 + .sectionimageright + p,
+.sectioncontent h3 + .sectionimageleft + p {
+    margin-top: 0.9rem;
+}
+
+.sectioncontent img {
+    border-radius: 12px;
+    margin: 0.9rem 0 2.5rem;
+    width: 100%;
+}
+
+.sectioncontent div.sectionimageright {
+    float: right;
+    width: 45%;
+    margin: 0.9rem 0 2.5rem 1.5rem;
+}
+
+.sectioncontent div.sectionimageleft {
+    float: left;
+    width: 45%;
+    margin: 0.9rem 1.5rem 2.5rem 0;
+}
+
+.imagehover {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: default;
+}
+
+.imagehover img {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    margin: 0;
+    transition: transform 0.4s ease;
+}
+
+.imagehover:hover img {
+    transform: scale(1.04);
+}
+
+.imagehoveroverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    color: #f5f0e6;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem 1rem 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    border-radius: 12px;
+}
+
+.imagehover:hover .imagehoveroverlay {
+    opacity: 1;
+}
+
+.flavorspectrum span:nth-child(1) { background: #3a4f1a; color: #fff; }
+.flavorspectrum span:nth-child(2) { background: #4e6b22; color: #fff; }
+.flavorspectrum span:nth-child(3) { background: #618530; color: #fff; }
+.flavorspectrum span:nth-child(4) { background: #789f3e; color: #fff; }
+.flavorspectrum span:nth-child(5) { background: #8fb84e; color: #fff; }
+.flavorspectrum span:nth-child(6) { background: #a8cc6a; color: #fff; }
+
+.flavorpagecontent {
+    max-width: 920px;
+}
+
+.flavorintro {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0.4rem 0 1.6rem;
+}
+
+.flavorspectrum {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.55rem;
+    margin: 0 0 1.4rem;
+}
+
+.flavorspectrum span {
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.flavorgrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.flavorcard {
+    border: 1px solid rgba(74, 90, 36, 0.38);
+    border-radius: 14px;
+    padding: 1.1rem 1.15rem;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.36), rgba(237, 230, 214, 0.35));
+    animation: slideup 0.65s ease both;
+}
+
+.flavorcard:nth-child(1) {
+    animation-delay: 0.03s;
+}
+
+.flavorcard:nth-child(2) {
+    animation-delay: 0.06s;
+}
+
+.flavorcard:nth-child(3) {
+    animation-delay: 0.09s;
+}
+
+.flavorcard:nth-child(4) {
+    animation-delay: 0.12s;
+}
+
+.flavorcard:nth-child(5) {
+    animation-delay: 0.15s;
+}
+
+.flavorcard:nth-child(6) {
+    animation-delay: 0.18s;
+}
+
+.flavorcard h3 {
+    margin-top: 0;
+    margin-bottom: 0.55rem;
+    clear: none;
+    border-bottom: none;
+    padding-top: 0;
+}
+
+.flavorcard p {
+    line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+    .homepage {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .header {
+        gap: 1rem;
+    }
+
+    .sitetitle {
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+    }
+
+    .navgrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .navcard {
+        aspect-ratio: auto;
+    }
+
+    .navcardheader {
+        opacity: 1;
+        justify-content: center;
+    }
+
+    .navcardheader .navcardline {
+        display: none;
+    }
+
+    .navcard::before,
+    .navcardoverlay::before,
+    .navcardoverlay::after {
+        opacity: 1;
+    }
+
+    .navcardlabel {
+        font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+    }
+
+    .description {
+        font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+        padding: 0 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .sectionnav {
+        flex-wrap: wrap;
+        padding: 1rem 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .navlinks {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+    }
+
+    .navlinks a {
+        font-size: 0.95rem;
+    }
+
+    .sectioncontent {
+        padding: 2rem 1.5rem 3rem;
+    }
+
+    .sectioncontent div.sectionimageright,
+    .sectioncontent div.sectionimageleft {
+        float: none;
+        width: 100%;
+        margin: 2rem 0;
+    }
+
+    .flavorspectrum {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .flavorgrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .sitetitle {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+    }
+
+    .headerline {
+        display: none;
+    }
+
+    .header {
+        justify-content: center;
+    }
+
+    .navcard {
+        aspect-ratio: 3 / 2;
+    }
+
+    .navlinks {
+        gap: 0.8rem;
+    }
+}
